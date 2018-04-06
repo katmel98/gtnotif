@@ -6,7 +6,7 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
-require('appmetrics-dash').monitor();
+// require('appmetrics-dash').monitor();
 
 var http = require('http');
 var https = require('https');
