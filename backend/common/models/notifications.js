@@ -116,6 +116,5 @@ module.exports = function(Notifications) {
         }
       );
     });
-    // next();
   });
 };
