@@ -1,0 +1,58 @@
+{
+  "name": "Notifications",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "platformId":{
+      "type": "string",
+      "required": true,
+      "mongodb":{
+        "columnName": "platform_id"
+      }
+    },    
+    "sender":{
+      "type": "string",
+      "required": true
+    },
+    "receivers": {
+      "type": "array",
+      "default": null
+    },
+    "subject":{
+      "type": "string",
+      "default": null
+    },
+    "message":{
+      "type": "string",
+      "default": null
+    },
+    "createdDate":{
+      "type": "date",
+      "defaultFn": "now",
+      "mongodb":{
+        "columnName": "created_date"
+      } 
+    },
+    "notifUuid":{
+      "type": "string",
+      "defaultFn": "uuidv4",
+      "index": true,
+      "mongodb":{
+        "columnName": "notif_uuid",
+        "dataType": "string"
+      }
+    },
+    "type": {
+      "type": "string",
+      "default": null
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

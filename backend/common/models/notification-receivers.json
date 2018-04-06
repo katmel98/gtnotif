@@ -1,0 +1,64 @@
+{
+  "name": "Notification_Receivers",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "notifUuid":{
+      "type": "string",
+      "index": true,
+      "required": true,
+      "mongodb":{
+        "columnName": "notif_uuid",
+        "dataType": "string"
+      }
+    },    
+    "receiver":{
+      "type": "string",
+      "required": true
+    },
+    "delivery":{
+      "type": "boolean",
+      "default": null
+    },
+    "deliveryDate":{
+      "type": "date",
+      "default": null,
+      "mongodb":{
+        "columnName": "delivery_date"
+      } 
+    },
+    "read":{
+      "type": "boolean",
+      "default": null
+    },
+    "readDate":{
+      "type": "date",
+      "default": null,
+      "mongodb":{
+        "columnName": "read_date"
+      } 
+    },
+    "createdDate":{
+      "type": "date",
+      "defaultFn": "now",
+      "mongodb":{
+        "columnName": "created_date"
+      } 
+    },
+    "platformId":{
+      "type": "string",
+      "required": true,
+      "mongodb":{
+        "columnName": "platform_id"
+      }    
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

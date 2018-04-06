@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "Email": {
+    "dataSource": "email"
+  },
+  "Notifications": {
+    "dataSource": "gtnotif",
+    "public": true
+  },
+  "Notification_Receivers": {
+    "dataSource": "gtnotif",
+    "public": true
+  },
+  "Customers": {
+    "dataSource": "gtnotif",
+    "public": true
+  }
+}

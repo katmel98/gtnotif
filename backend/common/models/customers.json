@@ -1,0 +1,26 @@
+{
+  "name": "Customers",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name":{
+      "type": "string"
+    },
+    "tokenId": {
+      "type": "string",
+      "defaultFn": "uuidv4",
+      "index": true,
+      "mongodb":{
+        "columnName": "token_id"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

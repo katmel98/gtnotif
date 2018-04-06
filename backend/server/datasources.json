@@ -1,0 +1,25 @@
+{
+  "gtnotif": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "gtnotif",
+    "name": "gtnotif",
+    "connector": "mongodb"
+  },
+  "email": {
+    "name": "email",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "katmel98@gmail.com",
+          "pass": "K@th3@2907"
+        }
+      }
+    ]
+  }
+}
