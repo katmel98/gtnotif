@@ -12,7 +12,15 @@ The backend will use a **REST API** to allow easy integration with any platform.
 
 The platform is **multiuser**, so any platform/user can register in it, and send notifications once it obtain a TokenID from the gtnotif and can be authenticated using the token.
 
-## Installation
+## Installation steps
+
+* git clone https://github.com/katmel98/gtnotif.git
+* cd gtnotif/backend  
+* npm install
+* cd ..
+* If it's the first time (if not jump to next point):  
+    * node backend/resources/db/init_script.js
+* node backend/server/server.js
 
 ## Directory Structure
 
@@ -29,4 +37,4 @@ The platform is **multiuser**, so any platform/user can register in it, and send
 Please, for any suggestion, problem, trouble, etc., feel free to contact me using any of the following:
 
 *Twitter:* @katmel98  
-*Email:* support@geddeontech.com
+*Email:* info@geddeontech.com
