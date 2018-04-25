@@ -1,5 +1,8 @@
 'use strict';
 
+var http = require('http');
+var loopback = require('loopback');
+
 var config = require('../../server/config.json');
 var path = require('path');
 
@@ -78,14 +81,23 @@ module.exports = function(Notifications) {
       // Identifica el tipo de notificación
       a = a + 1;
       if (object.type == 'email') {
+
+        var myMessage = {heading:"Welcome to MyCompany", text:"We are happy to have you on board."}; 
+
+        var renderer = loopback.template(path.resolve(__dirname, '../views/email-template.ejs'));
+        var htmlBody = renderer(myMessage);
+
         // Construye el mensaje
+
         let message = {
           to: element,
           from: object.sender,
           subject: object.subject,
-          text: object.message,
+          html: htmlBody,
         };
+        
         // Envía el correo electrónico
+        console.log(' **** ENVIANDO EL CORREO **** ');
         Email.send(
           message,
           function(err, mail) {

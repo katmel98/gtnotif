@@ -48,10 +48,12 @@
     "./middleware/error-logger": {},
     "strong-error-handler": {
       "params": {
-        "safeFields": ["errorCode"],
-         "debug": false,
-         "log": false
-       }      
+        "safeFields": [
+          "errorCode"
+        ],
+        "debug": false,
+        "log": false
+      }
     }
   }
 }

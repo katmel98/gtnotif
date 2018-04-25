@@ -7,14 +7,14 @@
     "validateUpsert": true
   },
   "properties": {
-    "name":{
+    "name": {
       "type": "string"
     },
     "tokenId": {
       "type": "string",
-      "defaultFn": "uuidv4",
       "index": true,
-      "mongodb":{
+      "defaultFn": "uuidv4",
+      "mongodb": {
         "columnName": "token_id"
       }
     }

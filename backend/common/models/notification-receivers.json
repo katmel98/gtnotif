@@ -7,54 +7,54 @@
     "validateUpsert": true
   },
   "properties": {
-    "notifUuid":{
+    "notifUuid": {
       "type": "string",
-      "index": true,
       "required": true,
-      "mongodb":{
+      "index": true,
+      "mongodb": {
         "columnName": "notif_uuid",
         "dataType": "string"
       }
-    },    
-    "receiver":{
+    },
+    "receiver": {
       "type": "string",
       "required": true
     },
-    "delivery":{
+    "delivery": {
       "type": "boolean",
       "default": null
     },
-    "deliveryDate":{
+    "deliveryDate": {
       "type": "date",
       "default": null,
-      "mongodb":{
+      "mongodb": {
         "columnName": "delivery_date"
-      } 
+      }
     },
-    "read":{
+    "read": {
       "type": "boolean",
       "default": null
     },
-    "readDate":{
+    "readDate": {
       "type": "date",
       "default": null,
-      "mongodb":{
+      "mongodb": {
         "columnName": "read_date"
-      } 
+      }
     },
-    "createdDate":{
+    "createdDate": {
       "type": "date",
       "defaultFn": "now",
-      "mongodb":{
+      "mongodb": {
         "columnName": "created_date"
-      } 
+      }
     },
-    "platformId":{
+    "platformId": {
       "type": "string",
       "required": true,
-      "mongodb":{
+      "mongodb": {
         "columnName": "platform_id"
-      }    
+      }
     }
   },
   "validations": [],

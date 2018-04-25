@@ -7,14 +7,14 @@
     "validateUpsert": true
   },
   "properties": {
-    "platformId":{
+    "platformId": {
       "type": "string",
       "required": true,
-      "mongodb":{
+      "mongodb": {
         "columnName": "platform_id"
       }
-    },    
-    "sender":{
+    },
+    "sender": {
       "type": "string",
       "required": true
     },
@@ -22,26 +22,26 @@
       "type": "array",
       "default": null
     },
-    "subject":{
+    "subject": {
       "type": "string",
       "default": null
     },
-    "message":{
+    "message": {
       "type": "string",
       "default": null
     },
-    "createdDate":{
+    "createdDate": {
       "type": "date",
       "defaultFn": "now",
-      "mongodb":{
+      "mongodb": {
         "columnName": "created_date"
-      } 
+      }
     },
-    "notifUuid":{
+    "notifUuid": {
       "type": "string",
-      "defaultFn": "uuidv4",
       "index": true,
-      "mongodb":{
+      "defaultFn": "uuidv4",
+      "mongodb": {
         "columnName": "notif_uuid",
         "dataType": "string"
       }

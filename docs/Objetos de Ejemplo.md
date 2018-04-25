@@ -1,0 +1,1 @@
+{"platformId":"8229ef73-d014-4df2-8088-84199a8e8dcb","sender":"katmel98@gmail.com","receivers":["katmel98@yahoo.com","danireth2006@gmail.com"],"type":"email","subject":"TE AAAAAAAMO!!!","message":"Despues de todos estos años, esto sigue siendo verdad. :-) Your Husband <3"}
