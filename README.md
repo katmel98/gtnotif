@@ -37,4 +37,4 @@ The platform is **multiuser**, so any platform/user can register in it, and send
 Please, for any suggestion, problem, trouble, etc., feel free to contact me using any of the following:
 
 *Twitter:* @katmel98  
-*Email:* info@geddeontech.com
+*Email:* katmel98@gmail.com
