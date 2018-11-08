@@ -17,6 +17,13 @@
       "mongodb": {
         "columnName": "token_id"
       }
+    },
+    "softDelete": {
+      "type": "boolean",
+      "default": "false",
+      "mongodb": {
+        "columnName": "soft_delete"
+      }
     }
   },
   "validations": [],

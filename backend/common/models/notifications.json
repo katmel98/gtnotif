@@ -9,7 +9,7 @@
   "properties": {
     "platformId": {
       "type": "string",
-      "required": true,
+      "required": false,
       "mongodb": {
         "columnName": "platform_id"
       }

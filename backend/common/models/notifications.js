@@ -37,6 +37,11 @@ module.exports = function(Notifications) {
     Notifications.disableRemoteMethodByName(methodsToBeDisable[i]);
   }
 
+  Notifications.observe('access', function logQuery(ctx, next) {
+    console.log('Accessing %s matching %s', ctx.Model.modelName, ctx.query.where);
+    next();
+  });
+
   // Método a ejecutar antes de guardar los datos de un modelo
   Notifications.observe('before save', function(ctx, next) {
     let object = null;
@@ -67,66 +72,100 @@ module.exports = function(Notifications) {
       object = ctx.data;
     }
 
-    var Email = app.models.Email;
-    var NotificationReceivers = app.models.Notification_Receivers;
+    let platform = {};
 
-    console.log('****** OBJETO ******');
-    console.log(object);
-    console.log('****** ****** ******');
+    console.log(object.platform_id);
 
-    var a = 0;
+    if ((object.platformId == null) || (object.platformId == '')) {
+      console.log(object);
+      let err;
+      err = new Error('Error from the API');
+      err.status = 400;
+      err.code = 'PLATFORM_TOKEN_NOT_VALID';
+      err.message = 'El token de cliente NO ES VALIDO';
+      next(err);
+    } else {
+      let Customer = app.models.Customers;
+      Customer.findOne({where: {tokenId: object.platformId, softDelete: false}})
+        .then(function(result) {
+          // console.log('*** RESULTADO DE LA BUSQUEDA ***');
+          // console.log(result);
+          // console.log('********************************');
 
-    // Realizando las operaciones por cada usuario que debe recibir la notificacion
-    object.receivers.forEach(element => {
-      // Identifica el tipo de notificación
-      a = a + 1;
-      if (object.type == 'email') {
+          if (result) {
+            var Email = app.models.Email;
+            var NotificationReceivers = app.models.Notification_Receivers;
 
-        var myMessage = {heading:"Welcome to MyCompany", text:"We are happy to have you on board."}; 
+            console.log('****** OBJETO ******');
+            console.log(object);
+            console.log('****** ****** ******');
 
-        var renderer = loopback.template(path.resolve(__dirname, '../views/email-template.ejs'));
-        var htmlBody = renderer(myMessage);
+            var a = 0;
 
-        // Construye el mensaje
+            // Realizando las operaciones por cada usuario que debe recibir la notificacion
+            object.receivers.forEach(element => {
+              // Identifica el tipo de notificación
+              a = a + 1;
+              if (object.type == 'email') {
+                var myMessage = {heading: 'Welcome to MyCompany', text: 'We are happy to have you on board.'};
 
-        let message = {
-          to: element,
-          from: object.sender,
-          subject: object.subject,
-          html: htmlBody,
-        };
-        
-        // Envía el correo electrónico
-        console.log(' **** ENVIANDO EL CORREO **** ');
-        Email.send(
-          message,
-          function(err, mail) {
-            if (err) console.log(err);
-            console.log('email sent!');
-            console.log(mail);
-          });
-      }
+                var renderer = loopback.template(path.resolve(__dirname, '../views/email-template.ejs'));
+                var htmlBody = renderer(myMessage);
 
-      // Creamos el objeto necesario para hacer seguimiento del estado de la notificación
-      let receiver = {
-        receiver: element,
-        notifUuid: object.notifUuid,
-        platformId: object.platformId,
-      };
+                // Construye el mensaje
 
-      // Persistimos el objeto
-      NotificationReceivers.create(
-        receiver, function(err, notif) {
-          if (err) console.log(err);
-          console.log('****** RECEPTOR DE NOTIFICACION REGISTRADO ******');
-          console.log(notif);
-          console.log('****** ************************************ ******');
-          a = a - 1;
-          if (a == 0) {
-            next();
+                let message = {
+                  to: element,
+                  from: object.sender,
+                  subject: object.subject,
+                  html: htmlBody,
+                };
+
+                // Envía el correo electrónico
+                console.log(' **** ENVIANDO EL CORREO **** ');
+                Email.send(
+                  message,
+                  function(err, mail) {
+                    if (err) console.log(err);
+                    console.log('email sent!');
+                    console.log(mail);
+                  });
+              }
+
+              // Creamos el objeto necesario para hacer seguimiento del estado de la notificación
+              let receiver = {
+                receiver: element,
+                notifUuid: object.notifUuid,
+                platformId: object.platformId,
+              };
+
+              // Persistimos el objeto
+              NotificationReceivers.create(
+                receiver, function(err, notif) {
+                  if (err) console.log(err);
+                  console.log('****** RECEPTOR DE NOTIFICACION REGISTRADO ******');
+                  console.log(notif);
+                  console.log('****** ************************************ ******');
+                  a = a - 1;
+                  if (a == 0) {
+                    next();
+                  }
+                }
+              );
+            });
+          } else {
+            let err;
+            err = new Error('Error from the API');
+            err.status = 400;
+            err.code = 'PLATFORM_TOKEN_NOT_REGISTERED';
+            err.message = 'El CLIENTE NO ESTA REGISTRADO';
+            next(err);
           }
-        }
-      );
-    });
+        })
+        .catch(function(error) {
+            console.log(error);
+            next(error);
+        });
+    }
   });
 };
