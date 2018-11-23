@@ -8,7 +8,6 @@ var path = require('path');
 
 module.exports = function(Notifications) {
   var app = require('../../server/server');
-  var moment = require('moment');
   var myGlobals = require('../../resources/support/constants');
   const CONSTANTES = myGlobals.CONSTANTS;
 
@@ -74,7 +73,7 @@ module.exports = function(Notifications) {
 
     let platform = {};
 
-    console.log(object.platform_id);
+    console.log('PLATAFORMA -->', object.platformId);
 
     if ((object.platformId == null) || (object.platformId == '')) {
       console.log(object);
@@ -100,17 +99,30 @@ module.exports = function(Notifications) {
             console.log(object);
             console.log('****** ****** ******');
 
+            let template = '';
+
+            if ((object.template) && (object.template !== '')) {
+              template = '../views/' + object.template + '.ejs';
+            } else {
+              template = '../views/email-template.ejs';
+            }
+
             var a = 0;
+
+            console.log('**** OBJECT RECEIVERS ****');
+            console.log(object.receivers);
+            console.log('**************************')
 
             // Realizando las operaciones por cada usuario que debe recibir la notificacion
             object.receivers.forEach(element => {
               // Identifica el tipo de notificación
               a = a + 1;
               if (object.type == 'email') {
-                var myMessage = {heading: 'Welcome to MyCompany', text: 'We are happy to have you on board.'};
+                // var myMessage = {heading: 'Welcome to MyCompany', text: 'We are happy to have you on board.', html: '<h2>MYTEST_EXCEPTION</h2>'};
 
-                var renderer = loopback.template(path.resolve(__dirname, '../views/email-template.ejs'));
-                var htmlBody = renderer(myMessage);
+                var renderer = loopback.template(path.resolve(__dirname, template));
+                // var htmlBody = renderer(myMessage);
+                var htmlBody = renderer(object);
 
                 // Construye el mensaje
 
@@ -163,8 +175,8 @@ module.exports = function(Notifications) {
           }
         })
         .catch(function(error) {
-            console.log(error);
-            next(error);
+          console.log(error);
+          next(error);
         });
     }
   });
