@@ -18,30 +18,44 @@
                                 style="color: inherit; font-size: inherit; line-height: inherit;"
                                 data-hs-cos-general-type="widget"
                                 data-hs-cos-type="rich_text">
-                                <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Te
-                                    damos la enhorabuena
-                                    por tu registro en
-                                    UILYO.</p>
-                                <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Podrás:</p>
-                                <ul>
-                                    <li style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Registro
-                                        de familiares</li>
-                                    <li style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Toma
-                                        de medicaciones</li>
-                                    <li style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Alerta
-                                        de actividades</li>
-                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">No
-                                        esperes más y
-                                        valida ahora tu
-                                        registro.</p>
-                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">&nbsp;</p>
+                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">
+                                        Se ha creado una nueva actividad relacionada a usted.
+                                    </p>
+                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">
+                                        Los datos son:
+                                        <br>
+                                        <ul>
+                                            <li>Actividad: <b><%= info.title %></b></li><br>
+                                            <li>Paciente(s): 
+                                                <ul>
+                                                    <% info.patients.forEach(function(patient) { %> 
+                                                        <li><b><%= patient.completeName %></b></li>
+                                                    <% }) %>
+                                                </ul>
+                                            </li><br>
+                                            <li>Cuidador(es): 
+                                                <ul>
+                                                    <% info.carers.forEach(function(carer) { %> 
+                                                        <li><b><%= carer.completeName %> ( <i><%= carer.carer_type %></i> )</b></li>
+                                                    <% }) %>
+                                                </ul>
+                                            </li><br>
+                                            <li>Fecha Inicio: <b><%= info.startDate %></b></li>
+                                            <li>Fecha Fin: <b><%= info.endDate %></b></li>
+                                            <li>Todo el Dia: <b><%= info.allDay %></b></li>
+                                            <li>Prioridad: <b><%= info.priority %></b></li>
+                                            <li>Estado: <b><%= info.status %></b></li>
+                                        </ul>
+                                    </p>    
+                                    <!-- <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">&nbsp;</p>
                                     <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; text-align:center"
                                         align="center"><a
-                                            href="http://uilyo.com/dev/"
+                                            href="http://localhost/care/"
                                             style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; text-decoration:none; background-color:#ff7a59; padding:12px 24px; color:white; border-radius:3px; border-style:solid; border-width:1px"
                                             bgcolor="#ff7a59"
                                             data-hs-link-id="0"
-                                            target="_blank">VALIDACION</a></p>
+                                            target="_blank">VALIDACION</a>
+                                    </p> -->
                             </div>
                         </div>
                         <!--end widget-span -->
@@ -50,4 +64,5 @@
             </tbody>
         </table>
     </td>
+    
 <%- include('./layout/footer'); -%>

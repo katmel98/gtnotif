@@ -18,30 +18,36 @@
                                 style="color: inherit; font-size: inherit; line-height: inherit;"
                                 data-hs-cos-general-type="widget"
                                 data-hs-cos-type="rich_text">
-                                <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Te
-                                    damos la enhorabuena
-                                    por tu registro en
-                                    UILYO.</p>
-                                <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Podrás:</p>
-                                <ul>
-                                    <li style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Registro
-                                        de familiares</li>
-                                    <li style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Toma
-                                        de medicaciones</li>
-                                    <li style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Alerta
-                                        de actividades</li>
-                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">No
-                                        esperes más y
-                                        valida ahora tu
-                                        registro.</p>
-                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">&nbsp;</p>
-                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; text-align:center"
+                                <% if(info.verifyHref != "") { %>
+                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">¡¡¡¡Enhorabuena!!!! 
+                                        Has sido invitado para que entres en la plataforma más efectiva para el cuidado de tus seres queridos.</p>
+                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Al aceptar la invitación la plataforma 
+                                        efectuará los siguientes pasos:</p>
+                                    <ol>
+                                        <li style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Generará un usuario, 
+                                            que será el correo en donde ha recibido el mensaje, 
+                                            y una contraseña para que usted pueda entrar en ella</li>
+                                        <li style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Le enviará a este correo un 
+                                            enlace para que pueda verificar su cuenta y hacer login</li>
+                                    </ol><br>
+                                        <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Esperamos verlo pronto ... El equipo de Uilyo</p>
+                                        <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">&nbsp;</p>
+                                        <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; text-align:center"
                                         align="center"><a
-                                            href="http://uilyo.com/dev/"
+                                            href="<%= info.verifyHref %>"
                                             style="-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; text-decoration:none; background-color:#ff7a59; padding:12px 24px; color:white; border-radius:3px; border-style:solid; border-width:1px"
                                             bgcolor="#ff7a59"
                                             data-hs-link-id="0"
-                                            target="_blank">VALIDACION</a></p>
+                                            target="_blank">ACEPTAR INVITACIÓN</a></p>
+                                <% } else { %>                                                                                
+                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">¡¡¡¡Enhorabuena!!!! 
+                                        Un amigo o conocido te ha invitado para que participes en su red de cuidados.</p>
+                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">Cuando vuelvas a loguearte o si estás logueado, 
+                                        verifica la sección de tu Red de Contactos y, si lo deseas, acepta la invitación.</p>
+                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">¡Gracias por todo tu apoyo!</p>
+                                    <p style="margin-bottom: 1em; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%">El equipo de Uilyo</p>
+                                <% } %>
+
                             </div>
                         </div>
                         <!--end widget-span -->
