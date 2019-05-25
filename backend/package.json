@@ -17,7 +17,7 @@
     "loopback": "^3.23.2",
     "loopback-boot": "^2.27.1",
     "loopback-component-explorer": "^6.3.1",
-    "loopback-component-storage": "^3.5.0",
+    "loopback-component-storage": "^3.6.1",
     "loopback-connector-mongodb": "^4.0.0",
     "moment": "^2.22.2",
     "nodemailer": "^4.6.8",
