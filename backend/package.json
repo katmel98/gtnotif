@@ -22,7 +22,7 @@
     "moment": "^2.22.2",
     "nodemailer": "^4.6.8",
     "serve-favicon": "^2.5.0",
-    "strong-error-handler": "^3.2.0"
+    "strong-error-handler": "^3.5.0"
   },
   "devDependencies": {
     "eslint": "^5.8.0",
